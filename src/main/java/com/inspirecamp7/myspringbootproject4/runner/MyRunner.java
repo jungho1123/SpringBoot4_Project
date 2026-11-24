@@ -28,10 +28,10 @@ public class MyRunner implements ApplicationRunner {
             System.out.println("optionArg = " + optionArg);
         }
 
-        //함수형 인터페이스 의 추상 메서드 void accept(T t)
+        //함수형 인터페이스 Consumer 의 추상 메서드 void accept(T t)
         args.getOptionNames().forEach(System.out::println);
 
-        optionArgs.forEach(m->System.out.println("optionArg = " + m));
+        optionArgs.forEach(name->System.out.println("optionArg = " + name));
 
     }
 }
