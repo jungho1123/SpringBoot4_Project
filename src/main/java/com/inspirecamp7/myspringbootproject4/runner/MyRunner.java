@@ -8,6 +8,8 @@ import org.springframework.core.annotation.Order;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
+import java.util.Set;
+
 @Component
 @Order(value = 2)
 public class MyRunner implements ApplicationRunner {
@@ -19,6 +21,17 @@ public class MyRunner implements ApplicationRunner {
         System.out.println("환경변수 MyRunner myboot.name= " + myBootName);
         System.out.println("server port check"+args.getOptionValues("server.port"));
         System.out.println("myboot.name check"+args.getOptionValues("myboot.name"));
+
+        // 환경 변수 목록 확인하기
+        Set<String> optionArgs=args.getOptionNames();
+        for (String optionArg : optionArgs) {
+            System.out.println("optionArg = " + optionArg);
+        }
+
+        //함수형 인터페이스 의 추상 메서드 void accept(T t)
+        args.getOptionNames().forEach(System.out::println);
+
+        optionArgs.forEach(m->System.out.println("optionArg = " + m));
 
     }
 }
