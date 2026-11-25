@@ -1,6 +1,7 @@
 package com.inspirecamp7.myspringbootproject4.runner;
 
 import com.inspirecamp7.myspringbootproject4.boot.MyBootProperties;
+import com.inspirecamp7.myspringbootproject4.config.CustomVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
@@ -23,6 +24,9 @@ public class MyRunner implements ApplicationRunner {
     Environment environment;
     @Autowired
     MyBootProperties myBootProperties;
+
+    @Autowired
+    CustomVO  customVO;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -48,6 +52,8 @@ public class MyRunner implements ApplicationRunner {
         System.out.println("myBootProperties"+myBootProperties.getFullName());
         System.out.println("myBootProperties"+myBootProperties.getMyBootAge());
         System.out.println("myBootProperties"+myBootProperties.getMyBootName());
+
+        System.out.println(customVO);
 
     }
 }
