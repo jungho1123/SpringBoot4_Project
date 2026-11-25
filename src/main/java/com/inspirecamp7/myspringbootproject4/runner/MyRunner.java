@@ -39,7 +39,6 @@ public class MyRunner implements ApplicationRunner {
         logger.debug("myboot.age check{}", myBootAge);
         logger.debug("myfullName={}", environment.getProperty("myboot.fullName"));
 
-
         // 환경 변수 목록 확인하기
         Set<String> optionArgs = args.getOptionNames();
         for (String optionArg : optionArgs) {
