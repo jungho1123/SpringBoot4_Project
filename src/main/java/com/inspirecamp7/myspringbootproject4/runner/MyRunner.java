@@ -34,10 +34,10 @@ public class MyRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        System.out.println("환경변수 MyRunner myboot.name= " + myBootName);
-        System.out.println("myboot.name check" + args.getOptionValues("myboot.name"));
-        System.out.println("myboot.age check" + myBootAge);
-        System.out.println("myfullName=" + environment.getProperty("myboot.fullName"));
+        logger.debug("환경변수 MyRunner myboot.name= {}", myBootName);
+        logger.debug("myboot.name check{}", args.getOptionValues("myboot.name"));
+        logger.debug("myboot.age check{}", myBootAge);
+        logger.debug("myfullName={}", environment.getProperty("myboot.fullName"));
 
 
         // 환경 변수 목록 확인하기
@@ -53,11 +53,11 @@ public class MyRunner implements ApplicationRunner {
 
         optionArgs.forEach(System.out::println);
 
-        System.out.println("myBootProperties"+myBootProperties.getFullName());
-        System.out.println("myBootProperties"+myBootProperties.getMyBootAge());
-        System.out.println("myBootProperties"+myBootProperties.getMyBootName());
+        logger.info("myBootProperties{}", myBootProperties.getFullName());
+        logger.info("myBootProperties{}", myBootProperties.getMyBootAge());
+        logger.info("myBootProperties{}", myBootProperties.getMyBootName());
 
-        System.out.println(customVO);
+
 
     }
 }
