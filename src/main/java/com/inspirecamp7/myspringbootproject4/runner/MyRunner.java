@@ -1,5 +1,6 @@
 package com.inspirecamp7.myspringbootproject4.runner;
 
+import com.inspirecamp7.myspringbootproject4.boot.MyBootProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
@@ -40,6 +41,11 @@ public class MyRunner implements ApplicationRunner {
         args.getOptionNames().forEach(System.out::println);
 
         optionArgs.forEach(System.out::println);
+
+        MyBootProperties myBootProperties = new MyBootProperties();
+        System.out.println(myBootProperties.getFullName());
+        System.out.println(myBootProperties.getMyBootAge());
+        System.out.println(myBootProperties.getMyBootName());
 
     }
 }
