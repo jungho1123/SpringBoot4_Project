@@ -45,9 +45,9 @@ public class MyRunner implements ApplicationRunner {
 
         optionArgs.forEach(System.out::println);
 
-        System.out.println(myBootProperties.getFullName());
-        System.out.println(myBootProperties.getMyBootAge());
-        System.out.println(myBootProperties.getMyBootName());
+        System.out.println("myBootProperties"+myBootProperties.getFullName());
+        System.out.println("myBootProperties"+myBootProperties.getMyBootAge());
+        System.out.println("myBootProperties"+myBootProperties.getMyBootName());
 
     }
 }
