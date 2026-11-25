@@ -47,7 +47,7 @@ public class MyRunner implements ApplicationRunner {
         }
 
         //함수형 인터페이스 Consumer 의 추상 메서드 void accept(T t)
-        args.getOptionNames().forEach(name-> System.out.println("optionArg = " + name));
+        args.getOptionNames().forEach(name -> System.out.println("optionArg = " + name));
         // 메서드 reference로 표현하기
         args.getOptionNames().forEach(System.out::println);
 
@@ -56,7 +56,6 @@ public class MyRunner implements ApplicationRunner {
         logger.info("myBootProperties{}", myBootProperties.getFullName());
         logger.info("myBootProperties{}", myBootProperties.getMyBootAge());
         logger.info("myBootProperties{}", myBootProperties.getMyBootName());
-
 
 
     }
