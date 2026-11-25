@@ -21,6 +21,9 @@ public class MyRunner implements ApplicationRunner {
 
     @Autowired
     Environment environment;
+    @Autowired
+    MyBootProperties myBootProperties;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
         System.out.println("환경변수 MyRunner myboot.name= " + myBootName);
@@ -42,7 +45,6 @@ public class MyRunner implements ApplicationRunner {
 
         optionArgs.forEach(System.out::println);
 
-        MyBootProperties myBootProperties = new MyBootProperties();
         System.out.println(myBootProperties.getFullName());
         System.out.println(myBootProperties.getMyBootAge());
         System.out.println(myBootProperties.getMyBootName());
