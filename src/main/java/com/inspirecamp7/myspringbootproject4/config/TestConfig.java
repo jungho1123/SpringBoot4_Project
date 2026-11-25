@@ -7,6 +7,9 @@ import org.springframework.context.annotation.Configuration;
 public class TestConfig {
     @Bean
     public CustomVO customVO() {
-
+        return CustomVO.builder()
+                .mode("TEST MODE")
+                .rate(0.5)
+                .build();
     }
 }
