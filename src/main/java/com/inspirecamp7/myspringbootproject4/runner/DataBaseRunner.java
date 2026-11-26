@@ -27,6 +27,7 @@ public class DataBaseRunner implements ApplicationRunner {
             log.info("Database Version: {}", metaData.getDatabaseProductVersion());
             log.info("db url:{}",metaData.getURL());
             log.info("db name:{}",metaData.getUserName());
+            log.info("DATABASE DRIVER:{}",metaData.getDriverName());
         }
 
     }
