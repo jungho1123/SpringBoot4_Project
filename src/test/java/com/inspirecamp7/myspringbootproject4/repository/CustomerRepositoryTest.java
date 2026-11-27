@@ -60,6 +60,20 @@ class CustomerRepositoryTest {
                 .orElseGet(Customer::new);
         assertThat(notExistCustomer.getCustomerId()).isNull();
     }
+    @Test
+    @DisplayName("")
+    void testReadNotFoundException(){
+        //orElseThrow 함수형 인터페이스supplier 추상메서드 T
+        Customer existCustomer=customerRepository
+                .findByCustomerId("A003")
+                .orElseThrow(()-> new RuntimeException("CUSTOMER NOT FOUND"));
+        assertThat(existCustomer.getCustomerId()).isNotNull();
+
+        Customer notExistCustomer = customerRepository
+                .findByCustomerId("A006")
+                .orElseThrow(() -> new RuntimeException("CUSTOMER NOT FOUND"));
+        assertThat(notExistCustomer.getCustomerId()).isNull();
+    }
 
 
 
