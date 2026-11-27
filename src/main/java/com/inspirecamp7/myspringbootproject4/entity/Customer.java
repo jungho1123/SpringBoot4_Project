@@ -2,6 +2,8 @@ package com.inspirecamp7.myspringbootproject4.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
@@ -9,6 +11,8 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "customers")
+@Getter
+@Setter
 public class Customer {
     @Id @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
