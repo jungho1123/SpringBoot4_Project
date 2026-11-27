@@ -45,10 +45,20 @@ class CustomerRepositoryTest {
     @Test
     @DisplayName(value = "Customer 조회 { 값이 일치하는 Customer 존재 하지 않는 경우 ")
     void testReadNotFound(){
-        Customer optionalCustomer = customerRepository
-                .findByCustomerId("A004")
+//        Customer optionalCustomer = customerRepository
+//                .findByCustomerId("A004")
+//                .orElseGet(Customer::new);
+//        assertThat(optionalCustomer.getCustomerId()).isNull();
+
+        Customer existCustomer=customerRepository
+                .findByCustomerId("A003")
                 .orElseGet(Customer::new);
-        assertThat(optionalCustomer.getCustomerId()).isNull();
+        assertThat(existCustomer.getCustomerId()).isNotNull();
+
+        Customer notExistCustomer=customerRepository
+                .findByCustomerId("A006")
+                .orElseGet(Customer::new);
+        assertThat(notExistCustomer.getCustomerId()).isNull();
     }
 
 
