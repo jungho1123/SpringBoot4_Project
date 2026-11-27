@@ -2,9 +2,11 @@ package com.inspirecamp7.myspringbootproject4.repository;
 
 import com.inspirecamp7.myspringbootproject4.entity.Customer;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.crossstore.ChangeSetPersister;
 
 import java.util.Optional;
 
@@ -33,13 +35,21 @@ class CustomerRepositoryTest {
         assertThat(savedCustomer.getCustomerName()).isEqualTo("박정호");
     }
     @Test
+    @DisplayName(value = "Customer 조회 { 값이 일치하는 Customer 존재하는 경우 }")
     void testRead(){
         //given
         Optional<Customer> optionalCustomer = customerRepository.findByCustomerId("A003");
         // optional 이 담고 있는 customer가 값을 가지고 있으면 ?
         optionalCustomer.ifPresent(customer -> assertThat(customer.getCustomerId()).isEqualTo("A003"));
     }
-
+    @Test
+    @DisplayName(value = "Customer 조회 { 값이 일치하는 Customer 존재 하지 않는 경우 ")
+    void testReadNotFound(){
+        Customer optionalCustomer = customerRepository
+                .findByCustomerId("A004")
+                .orElseGet(Customer::new);
+        assertThat(optionalCustomer.getCustomerId()).isNull();
+    }
 
 
 
