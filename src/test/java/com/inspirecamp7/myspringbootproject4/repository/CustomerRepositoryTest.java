@@ -23,7 +23,9 @@ class CustomerRepositoryTest {
     }
     @Test
     @Transactional
-    @Rollback(false) // 등록되 데이터를 반드시 확인하고 싶으니 rollback 처리를 하지 마
+    @Disabled
+    @Rollback(false)
+        // 등록되 데이터를 반드시 확인하고 싶으니 rollback 처리를 하지 마
     void testInsert(){
         // given 준비 단계
         Customer customer = new Customer();  // 컨트롤 알트 V 리턴타입 자동생성 단축키
@@ -81,10 +83,16 @@ class CustomerRepositoryTest {
     }
     @Test
     @Transactional
+    @Rollback(false)
     @DisplayName("업데이트 테스트")
     void testUpdate(){
+        Customer customer = customerRepository.findByCustomerId("A004").orElseGet(()-> new Customer());
+        customer.setCustomerName("업데이트3");
+        assertThat(customer.getCustomerName()).isEqualTo("업데이트3");
 
     }
+    //Hibernate: select c1_0.id,c1_0.created_at,c1_0.customer_id,c1_0.customer_name from customers c1_0 where c1_0.customer_id=?
+    //Hibernate: update customers set customer_name=? where id=?
 
 
 

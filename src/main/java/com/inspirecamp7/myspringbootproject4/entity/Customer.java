@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Max;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicUpdate;
 
 import java.time.LocalDateTime;
 
@@ -13,6 +14,7 @@ import java.time.LocalDateTime;
 @Table(name = "customers")
 @Getter
 @Setter
+@DynamicUpdate //동적업데이트
 public class Customer {
     @Id @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
